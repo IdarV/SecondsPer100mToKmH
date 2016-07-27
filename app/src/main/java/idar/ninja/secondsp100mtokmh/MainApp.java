@@ -29,7 +29,34 @@ public class MainApp extends AppCompatActivity {
         stopwatch = new Stopwatch();
         startStopButton = (Button) findViewById(R.id.startStopButton);
 
-        startStopButton.setOnClickListener(new View.OnClickListener() {
+        startStopButton.setOnClickListener(startStopButtonsOnClickListener());
+
+        updateViewThread().start();
+    }
+
+    public Thread updateViewThread(){
+        return new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(10);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                timerText.setText(stopwatch.toString());
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+    }
+
+    public View.OnClickListener startStopButtonsOnClickListener(){
+        return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(stopwatch.isRunning()){
@@ -43,28 +70,6 @@ public class MainApp extends AppCompatActivity {
                     startStopButton.setText(R.string.lap);
                 }
             }
-        });
-        Thread t = new Thread() {
-
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(10);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // update TextView here!
-                                timerText.setText(stopwatch.toString());
-                            }
-                        });
-                    }
-                } catch (InterruptedException e) {
-                }
-            }
         };
-
-        t.start();
-
     }
 }
