@@ -57,7 +57,7 @@ public class Stopwatch {
         return (running) ? ((((System.currentTimeMillis() - startTime) / 1000) / 60 ) / 60) : 0;
     }
     public boolean isRunning(){
-        return getElapsedTimeMili() > 0;
+        return running;
     }
 
     public String formatNumber(long number){
