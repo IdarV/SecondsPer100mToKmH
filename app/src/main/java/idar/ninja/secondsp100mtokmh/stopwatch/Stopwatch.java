@@ -35,26 +35,26 @@ public class Stopwatch {
 
     //elaspsed time in milliseconds
     public long getElapsedTimeMili() {
-        return (running) ? ((System.currentTimeMillis() - startTime)/100) % 1000 : 0;
+        return running ? ((System.currentTimeMillis() - startTime)/100) % 1000 : 0;
     }
 
     public long getMili(){
-        return (running) ? (System.currentTimeMillis() - startTime) % 1000 : 0;
+        return running ? (System.currentTimeMillis() - startTime) % 1000 : 0;
     }
 
     //elaspsed time in seconds
     public long getElapsedTimeSecs() {
-        return (running) ? ((System.currentTimeMillis() - startTime) / 1000) % 60 : 0;
+        return running ? ((System.currentTimeMillis() - startTime) / 1000) % 60 : 0;
     }
 
     //elaspsed time in minutes
     public long getElapsedTimeMin() {
-        return (running) ? (((System.currentTimeMillis() - startTime) / 1000) / 60 ) % 60 : 0;
+        return running ? (((System.currentTimeMillis() - startTime) / 1000) / 60 ) % 60 : 0;
     }
 
     //elaspsed time in hours
     public long getElapsedTimeHour() {
-        return (running) ? ((((System.currentTimeMillis() - startTime) / 1000) / 60 ) / 60) : 0;
+        return running ? ((((System.currentTimeMillis() - startTime) / 1000) / 60 ) / 60) : 0;
     }
     public boolean isRunning(){
         return running;
