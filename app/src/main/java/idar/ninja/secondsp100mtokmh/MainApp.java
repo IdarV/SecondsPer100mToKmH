@@ -1,12 +1,12 @@
 package idar.ninja.secondsp100mtokmh;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import java.text.DecimalFormat;
 
 import idar.ninja.secondsp100mtokmh.stopwatch.Stopwatch;
 
@@ -32,8 +32,11 @@ public class MainApp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(stopwatch.isRunning()){
+                    DecimalFormat df = new DecimalFormat("#.##");
+
                     time = stopwatch.toString();
-                    lastTimeMilis.setText(time);
+                    double kmh = 1.0/(stopwatch.getElapsedTimeMili() / 3600.0);
+                    lastTimeMilis.setText(df.format(kmh) + " km/h");
                     stopwatch.start();
                 } else{
                     stopwatch.start();

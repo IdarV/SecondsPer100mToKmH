@@ -72,8 +72,12 @@ public class Stopwatch {
         return getElapsedTimeMili() > 0;
     }
 
+    public String formatNumber(long number){
+        return (number > 10) ? "" + number : "0" + number;
+    }
+
     public String toString() {
-        return getElapsedTimeHour() + ":" + getElapsedTimeMin() + ":"
-                + getElapsedTimeSecs() + "." + getElapsedTimeMili();
+        return formatNumber(getElapsedTimeHour()) + ":" + formatNumber(getElapsedTimeMin()) + ":"
+                + formatNumber(getElapsedTimeSecs()) + "." + formatNumber(getElapsedTimeMili());
     }
 }

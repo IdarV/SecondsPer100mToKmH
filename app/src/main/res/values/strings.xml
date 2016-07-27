@@ -2,4 +2,6 @@
     <string name="app_name">SecondsP100mTokmh</string>
     <string name="start">Start</string>
     <string name="lap">Lap</string>
+    <string name="kmh">km/h</string>
+    <string name="kmh_default_text">0 km/h</string>
 </resources>
