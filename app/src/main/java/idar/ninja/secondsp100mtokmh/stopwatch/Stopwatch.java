@@ -37,7 +37,7 @@ public class Stopwatch {
     public long getElapsedTimeMili() {
         long elapsed = 0;
         if (running) {
-            elapsed =((System.currentTimeMillis() - startTime)/100) % 1000 ;
+            elapsed =((System.currentTimeMillis() - startTime)) % 1000 ;
         }
         return elapsed;
     }
