@@ -13,10 +13,10 @@ import idar.ninja.secondsp100mtokmh.stopwatch.Stopwatch;
 public class MainApp extends AppCompatActivity {
 
     private TextView timerText;
-    private TextView lastTimeMilis;
+    private TextView lastTimeKmh;
+    private TextView lastTimeSeconds;
     private Stopwatch stopwatch;
     private Button startStopButton;
-    private String time = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,8 @@ public class MainApp extends AppCompatActivity {
         setContentView(R.layout.activity_main_app);
 
         timerText = (TextView) findViewById(R.id.timerText);
-        lastTimeMilis = (TextView) findViewById(R.id.lastTime);
+        lastTimeKmh = (TextView) findViewById(R.id.lastTimeKmh);
+        lastTimeSeconds = (TextView) findViewById(R.id.lastTimeSeconds);
         stopwatch = new Stopwatch();
         startStopButton = (Button) findViewById(R.id.startStopButton);
 
@@ -33,10 +34,9 @@ public class MainApp extends AppCompatActivity {
             public void onClick(View view) {
                 if(stopwatch.isRunning()){
                     DecimalFormat df = new DecimalFormat("#.##");
-
-                    time = stopwatch.toString();
                     double kmh = 1.0/(stopwatch.getElapsedTimeMili() / 3600.0);
-                    lastTimeMilis.setText(df.format(kmh) + " km/h");
+                    lastTimeKmh.setText(df.format(kmh) + " km/h");
+                    lastTimeSeconds.setText(stopwatch.toString());
                     stopwatch.start();
                 } else{
                     stopwatch.start();

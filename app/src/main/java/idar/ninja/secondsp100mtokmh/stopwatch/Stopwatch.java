@@ -37,9 +37,13 @@ public class Stopwatch {
     public long getElapsedTimeMili() {
         long elapsed = 0;
         if (running) {
-            elapsed =((System.currentTimeMillis() - startTime)) % 1000 ;
+            elapsed =((System.currentTimeMillis() - startTime)/100) % 1000 ;
         }
         return elapsed;
+    }
+
+    public long getMili(){
+        return (running) ? (System.currentTimeMillis() - startTime) % 1000 : 0;
     }
 
     //elaspsed time in seconds
@@ -78,6 +82,6 @@ public class Stopwatch {
 
     public String toString() {
         return formatNumber(getElapsedTimeHour()) + ":" + formatNumber(getElapsedTimeMin()) + ":"
-                + formatNumber(getElapsedTimeSecs()) + "." + formatNumber(getElapsedTimeMili());
+                + formatNumber(getElapsedTimeSecs()) + "." + formatNumber(getMili());
     }
 }

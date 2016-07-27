@@ -30,8 +30,16 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/kmh_default_text"
-        android:id="@+id/lastTime"
+        android:id="@+id/lastTimeKmh"
         android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/lastTimeSeconds"
+        android:layout_above="@+id/lastTimeKmh"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
